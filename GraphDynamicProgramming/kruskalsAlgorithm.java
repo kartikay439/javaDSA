@@ -1,4 +1,4 @@
-package Graph;
+package GraphDynamicProgramming;
 
 public class kruskalsAlgorithm {
      
