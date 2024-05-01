@@ -1,8 +1,7 @@
 package searchTree;
 
-import Nodes.TreeNode;
+import Tree.TreeNode;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;

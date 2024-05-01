@@ -8,6 +8,10 @@ public class Test {
         tr.levelOrderInsert(3);
         tr.levelOrderInsert(4);
         tr.levelOrderInsert(5);
+        tr.levelOrderInsert(6);
+        tr.levelOrderInsert(7);
+        tr.levelOrderInsert(8);
+        tr.levelOrderInsert(9);
         tr.levelOrderTraversal();
         System.out.println(tr.root.left.data);
         System.out.println(BTree.height(tr.root));
