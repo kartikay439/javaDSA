@@ -14,6 +14,7 @@ public class   BSearchTree extends TreeNode {
 
     }
 
+
     public BSearchTree(int[] arr) {
         for (int i : arr) {
             insertNodeIterative(i);
@@ -32,6 +33,7 @@ public class   BSearchTree extends TreeNode {
 //        else if(root.data>data)insertNode(root.right,data);
 //
 //    }
+
     public TreeNode insertNode(TreeNode root, int data) {
         if (root == null) {
             TreeNode newNode = new TreeNode(data);

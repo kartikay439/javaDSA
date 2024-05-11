@@ -3,10 +3,21 @@ package Tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import static javax.swing.Spring.height;
+
+//BINARY SEARCH TREE
 public class BTree extends TreeNode {
 
     TreeNode root;
 
+    //DEPTH OF TREE
+    public int depth(TreeNode root)
+    {
+        if(root==null)return 0;
+        return Math.max(depth(root.left),depth(root.right))+1;
+    }
+
+    //LEVEL ORDER INSERTION IN BINARY SEARCH TREE
     public void levelOrderInsert(int data) {
         TreeNode newNode = new TreeNode(data);
         if(root==null){
@@ -36,6 +47,37 @@ public class BTree extends TreeNode {
         }
     }
 
+    //BINARY INSERTION
+    public void insertNodeIterative(int data) {
+        TreeNode newNode = new TreeNode(data);
+        if (root == null) {
+            root = newNode;
+            return;
+        }
+        TreeNode current = root;
+        TreeNode pre;
+        while (true) {
+            pre = current;
+            if (data < current.data) {
+                current = current.left;
+                if (current == null) {
+                    pre.left = newNode;
+                    return;
+                }
+            } else {
+                current = current.right;
+                if (current == null) {
+                    pre.right = newNode;
+                    return;
+                }
+            }
+
+
+        }
+
+    }
+
+//LEVEL ORDER TRAVERSAL
     public void levelOrderTraversal() {
         if(this.root==null){
             return;
@@ -57,6 +99,7 @@ public class BTree extends TreeNode {
 
     }
 
+    //PREORDER TRAVERSAL OF ANY TREE
     public void preOrder(TreeNode node){
         if(node != null){
             System.out.print(node.data + " ");
@@ -65,6 +108,7 @@ public class BTree extends TreeNode {
         }
     }
 
+    //INORDER TRAVERSAL OF ANY TREE
     public void inOrder(TreeNode node){
         if(node != null){
 
@@ -74,6 +118,7 @@ public class BTree extends TreeNode {
         }
     }
 
+    //POSTORDER TRAVERSAL OF ANY TREE
     public void postOrder(TreeNode node){
         if(node != null){
 
@@ -83,14 +128,17 @@ public class BTree extends TreeNode {
         }
     }
 
-    public static int height(TreeNode node){
-        if(node == null){
-            return 0;
-        }
-//        return Math.max(0,0) +1;  //+1 for the root node existence
-        return Math.max(height(node.left),height(node.right)) +1;
-    }
 
+//    public static int height(TreeNode node){
+//        if(node == null){
+//            return 0;
+//        }
+////        return Math.max(0,0) +1;  //+1 for the root node existence
+//        return Math.max(height(node.left),height(node.right)) +1;
+//    }
+
+
+    //COUNTING TOTAL NUMBER OF NODES IN A TREE
     public static int countNode(TreeNode node){
         if (node==null){
             return 0;
@@ -99,6 +147,7 @@ public class BTree extends TreeNode {
         return (countNode(node.left)+countNode(node.right)+1);
     }
 
+    //COUNTING ONLY LEAF NODE IN ANY KIND OF TREE
     public static int countLeafNodes(TreeNode node){
         if (node==null){
             return 0;
@@ -111,6 +160,7 @@ public class BTree extends TreeNode {
         return (countLeafNodes(node.left)+countLeafNodes(node.right));
     }
 
+    //FINDING SUM OF LEAF NODES IN A TREE
     public static int sumLeafNodes(TreeNode node){
         if (node==null){
             return 0;
@@ -123,6 +173,8 @@ public class BTree extends TreeNode {
         return (sumLeafNodes(node.left)+sumLeafNodes(node.right));
     }
 
+
+    //FINDING SUM OF ALL NODES IN ANY KIND OF TREE
     public static int sumNodes(TreeNode node){
         if (node==null){
             return 0;
@@ -131,21 +183,24 @@ public class BTree extends TreeNode {
         return (sumNodes(node.left)+sumNodes(node.right)+node.data);
     }
 
-    public static boolean isBalance(TreeNode node){
-        if(node==null){
+    //CHECKING WHETHER TREE IS BALANCED OR NOT
+    public  boolean isBalance(TreeNode root){
+        if(root==null){
             return true;
         }
-        int lh=height(node.left);
-        int rh=height(node.left);
+        int lh=depth(root.left);
+        int rh=depth(root.right);
 
         if(Math.abs(lh-rh)>1){
             return false;
         }
 
-        return isBalance(node.left) && isBalance(node.right);
+        return isBalance(root.left) && isBalance(root.right);
 
     }
 
+
+    //SERCHING IN ANY TREE
     public static boolean search(TreeNode node, int value){
         if(node==null){
             return true;
@@ -158,15 +213,16 @@ public class BTree extends TreeNode {
         return search(node.left, value) || search(node.right, value);
 
     }
-    public  static boolean symmetric(TreeNode node1,TreeNode node2)
-    {
-if(node1==null || node2==null)
-{
-    return true;
-}
-if(node1!=null && node2!=null && node1.data==node2.data )
-        return (symmetric(node1.left,node2.right) && symmetric(node1.right,node2.left));
 
-return false;
+    //WHETHER THE TREE IS SYMMETRIC OR NOT.
+    public   boolean symmetric(TreeNode node1,TreeNode node2)
+    {
+        if(node1==null && node2==null )return  true;
+        if(node1!=null && node2!=null && node1.data==node2.data )
+        {
+            return symmetric(node1.right,node2.left) && symmetric(node1.left,node2.right);
+        }
+        return false;
+
     }
 }
