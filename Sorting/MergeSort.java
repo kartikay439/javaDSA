@@ -1,6 +1,7 @@
-package Sorting;
+qpackage Sorting;
 
 import java.util.Arrays;
+//
 
 public class MergeSort {
     public int[] MergeSort(int[] arr)
