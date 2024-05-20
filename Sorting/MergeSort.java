@@ -1,7 +1,7 @@
-qpackage Sorting;
+package Sorting;
 
 import java.util.Arrays;
-//
+//MATRIX
 
 public class MergeSort {
     public int[] MergeSort(int[] arr)
