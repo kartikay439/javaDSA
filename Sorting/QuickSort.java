@@ -3,9 +3,10 @@ package Sorting;
 public class QuickSort {
     static  void  quickSort(int[] arr,int i,int j){
         if(i<=j) {
+            // till p all elements are smaller than and after p all elements are greater than  it
+            //so it means p index is sorted
             int p = pivot(arr, i, j);
-            quickSort(arr, i, p - 1);
-            quickSort(arr, p + 1, j);
+            quickSort(arr, i, p - 1);  /*     <------ p ------>     */  quickSort(arr, p + 1, j);
         }
     }
     static int pivot(int[] arr,int i,int j){
